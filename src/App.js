@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import FooterComponent from "./component/FooterComponent";
+import HeaderComponent from "./component/HeaderComponent";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import GetEmployeeComponent from "./component/GetEmployeeComponent";
+import AddUpdateEmployeeComponent from "./component/AddUpdateEmployeeComponent";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <HeaderComponent />
+      <Router>
+        <Switch>
+          <Route path="/" exact component={GetEmployeeComponent}></Route>
+          <Route
+            path="/add-update-employee/:id"
+            component={AddUpdateEmployeeComponent}
+          ></Route>
+        </Switch>
+      </Router>
+      <FooterComponent />
     </div>
   );
 }
